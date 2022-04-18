@@ -176,7 +176,7 @@ function scoreboard(getInningScore, inning, inningsToBe) {
   let homeFinal = 0;
   let awayFinal = 0;
 
-      for(let i=0; i<inningsToBe; i++){
+      for(let i=1; i<inningsToBe+1; i++){
          let thisInning = getInningScore(inning)
 
          inningsFinal.push(`Inning ${i}: Away ${thisInning["Away"]} - Home ${thisInning["Home"]}`)
