@@ -30,11 +30,19 @@ console.log('example task:', processFirstItem(['foo','bar'],function(str){return
   Study the code for counter1 and counter2, then answer the questions below.
   
   1. What is the difference between counter1 and counter2?
+    The difference between counter1 and counter2, is that counter1 is a function with a counter inside, that means that everytime the function is invoked
+    the counter will reset to 0. counter2 on the other hand, has the counter outside of the function, meaning everytime it is called, the counter will
+    continue to add, it will not reset.
   
   2. Which of the two uses a closure? How can you tell?
+    counter2 uses a closure, because closures are specific to nested functions being able to reach outside of its scope. 
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
+     counter1 would be better if we wanted to use a temporary number. For example, if everytime the function occured, we wanted to see a specific number 
+     divided, we would want the number to be reset between function use.
+     counter2 would be prefered if we were keeping record over a long period of time, and we wanted to have the counter ongoing, for example
+     if we were making a game and wanted to keep the players points, and have it increase throughout.
 */
 
 // counter1 code
@@ -64,9 +72,10 @@ Use the inning function below to do the following:
 NOTE: This will be a callback function for the tasks below
 */
 
-function inning(/*Code Here*/){
-    /*Code Here*/
+function inning(){
+    return Math.round(Math.random()*2);
 }
+console.log(inning())
 
 
 /* ⚾️⚾️⚾️ Task 3: finalScore() ⚾️⚾️⚾️
@@ -83,10 +92,22 @@ Use the finalScore function below to do the following:
 }
 */ 
 
-function finalScore(/*Code Here*/){
-  /*Code Here*/
+function finalScore(callFunc, numInn){
+    let homeScore = 0;
+    let awayScore = 0;
+
+  for(let i=0; i<numInn; i++){
+    homeScore = homeScore + callFunc();
+    awayScore = awayScore + callFunc();
+  }
+
+  return {
+    Home: homeScore,
+    Away: awayScore
+  }; 
 }
 
+console.log(finalScore(inning, 9))
 
 /* ⚾️⚾️⚾️ Task 4: getInningScore() ⚾️⚾️⚾️
 Use the getInningScore() function below to do the following:
@@ -101,10 +122,13 @@ For example: invoking getInningScore(inning) might return this object:
   */
 
 
-function getInningScore(/*Your Code Here */) {
-  /*Your Code Here */
-
+function getInningScore(ranInnings) {
+  return {
+    Home: ranInnings(),
+    Away: ranInnings()
+  }
 }
+console.log(getInningScore(inning));
 
 
 /* STRETCH: ⚾️⚾️⚾️ Task 5: scoreboard() ⚾️⚾️⚾️
