@@ -35,7 +35,8 @@ console.log('example task:', processFirstItem(['foo','bar'],function(str){return
     continue to add, it will not reset.
   
   2. Which of the two uses a closure? How can you tell?
-    counter2 uses a closure, because closures are specific to nested functions being able to reach outside of its scope. 
+    counter1 AND counter2 uses closure, because closures are when functions or if statements reach outside of its scope to find a variable
+    or value that is mentioned inside said function or if statement etc.
   
   3. In what scenario would the counter1 code be preferable? In what scenario would 
      counter2 be better?  
